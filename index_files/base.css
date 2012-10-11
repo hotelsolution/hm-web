@@ -1,0 +1,24 @@
+/* CSS Document */
+ul,li {list-style:none; margin:0; padding:0; text-align:left;}
+.lList {margin:5px 20px;}
+	.lList .l1 {background:url(../images/l1_l.gif) no-repeat; line-height:30px; font-size:14px; color:#fff; padding-left:10px; font-weight:700; cursor:pointer;}
+	.lList .cur {background:url(../images/l1_d.gif) no-repeat;}
+		.lList .l1 .subList {display:none; margin:5px 0 15px;}
+		.lList .cur .subList {display:block;}
+			.lList .l1 .subList li {line-height:1.8em; font-weight:normal; background:url(../images/xpbg01.gif) repeat-x 0 -5px;}
+
+
+
+.style1 {color: #90826a}
+.style2 {color: #00a651}
+.style6 {color: #006600}
+.style7 {color: #ece7cd}
+.black {color:#000;}
+
+
+.feedback {width:90%;margin:5px auto 15px;border-top:1px dotted #ccc;}
+
+/*分页*/
+.pagination {padding-left:15px; clear:both;}
+.pagination a {display:inline-block;padding:5px 8px;border:1px solid #543d14;background:#fff;vertical-align:middle;margin:0 5px;line-height:15px;}
+.pagination a.cur {border:1px solid #543d14;color:#543d14;background:#d0bd9a;}

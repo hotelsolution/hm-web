@@ -23,10 +23,9 @@ $(document).ready(function(){
 	$("#date").html(datestr);
 	
 	$( "#clientlist" ).autocomplete({
-            source: "test.json"
+            source: "/cgi-bin/hm-cgi/clientautocomp"
         });
-	        
-
+	
 	$("#roomid").html(roomid);
 
 });

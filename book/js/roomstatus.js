@@ -56,8 +56,7 @@ function ondatepick(formated, dates)
 	var i="hello"+formateddate;
 	$("table.roomstatus").html("");
 
-
-	$.getJSON("/cgi/hm-cgi/status?"+formateddate ,onjson );
+	$.getJSON("/cgi-bin/hm-cgi/status?"+formateddate ,onjson );
 }
 
 $(document).ready(function(){

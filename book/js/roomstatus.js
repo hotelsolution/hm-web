@@ -6,16 +6,20 @@ function onjson(data)
 
 	var i = 0;
 
-	$.each(data, function(key, roominfo) {
+	$.each(data.rooms, function(key, roominfo) {
 	//	alert(val.booker.name);
 		var booker = roominfo.booker;
 		items += '<td id="' + roominfo.roomid + '">' + '<p id="roomid">' + roominfo.roomid + '</p>';
 
-		if(roominfo.free)
-			items += '<p color=#00FF00> 空闲 </p>' + "</td>\n";
-		else
-			items += '<p >' + booker.name + '</p>' + "</td>\n";
-		
+		if(roominfo.free=="true"){
+			items += '<p color=#00FF00 class="freeroom"> 空闲 </p>' + "</td>\n";
+		}else{
+			if(roominfo.multi=="true"){
+				items += "<p>很多人</p></td>\n";
+			}else{
+				items += '<p>' + booker.name + '</p>' + "</td>\n";
+			}
+		}
 		i+=1;
 		if(i==5){
 			items += "</tr>\n<tr>";
@@ -35,17 +39,19 @@ function onjson(data)
 
 	});
 
-	$("table.roomstatus tr td").click(function(){
-		
+
+	$("table.roomstatus tr td").click(function(){		
 		/* 鼠标点击了 */
 		var roomid = $(this).children("#roomid").html();
 		var formateddate = $('#inputDate').DatePickerGetDate(true);
 
 		// 刷新，跳到新页面！
 
-		window.open("prebook.html?date="+formateddate+"&room="+roomid);
+		if($(this).children("p").hasClass("freeroom") )
+			window.open("prebook.html?date="+formateddate+"&room="+roomid);
 
 	});
+	
 }
 
 
@@ -55,7 +61,7 @@ function ondatepick(formated, dates)
 
 	var i="hello"+formateddate;
 	$("table.roomstatus").html("");
-
+	$("#test").html("")
 	$.getJSON("/cgi-bin/hm-cgi/status?"+formateddate ,onjson );
 }
 

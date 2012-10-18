@@ -1,3 +1,29 @@
+function decode(s) {
+    return decodeURIComponent(s.replace(/\\(u[0-9a-fA-F]{4})/gm, '%$1'));
+}
+
+function bookresult(data)
+{
+	if(data.status=="true")
+		alert(data.status)
+	else{
+		var reason =decodeURIComponent(data.reason);
+		alert(reason)
+
+		$("#result").html(reason)
+
+	}
+}
+
+function submitbook()
+{
+	var name=$("#clientlist").val();
+
+	var jsondata = { room: roomid, name: name , date:datestr  } ;
+
+	// 构建 json 并发送，
+	$.post('/cgi-bin/hm-cgi/book', $.toJSON(jsondata),bookresult,"json");
+}
 
 $(document).ready(function(){
 
@@ -27,5 +53,7 @@ $(document).ready(function(){
         });
 	
 	$("#roomid").html(roomid);
+
+	$("#submitbook").click(submitbook);
 
 });

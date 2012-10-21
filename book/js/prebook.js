@@ -4,56 +4,56 @@ function decode(s) {
 
 function bookresult(data)
 {
-	if(data.status=="true")
-		alert(data.status)
+	if(data.status=="true"){
+		alert("预订成功")
+		$("#result").html("预订成功")
+	}
 	else{
 		var reason =decodeURIComponent(data.reason);
-		alert(reason)
 
 		$("#result").html(reason)
 
 	}
 }
 
+
 function submitbook()
 {
-	var name=$("#clientlist").val();
 
-	var jsondata = { room: roomid, name: name , date:datestr  } ;
+
+	var name=$("#clientlist").val();
+	var special=$("#special").val();
+
+	var jsondata = { room: roomid, name:encodeURIComponent(name) , date:datestr , special:encodeURIComponent(special) } ;
 
 	// 构建 json 并发送，
 	$.post('/cgi-bin/hm-cgi/book', $.toJSON(jsondata),bookresult,"json");
+
 }
+
+function activeprebook(_roomid , _datestr){
+
+	roomid = _roomid;
+
+	datestr= _datestr;
+
+	$("#querystring").html("预订的房间是：" + roomid );
+	
+
+	$("title").html("预定房间 "  + roomid);
+	
+	$("var#roomid").html(roomid);
+
+	$("#submitbook").click(submitbook);
+
+	$("var#date").html(datestr[0]+ " - " + datestr[1]);
+};
 
 $(document).ready(function(){
 
-	var addstr= document.URL;
-	var num=addstr.indexOf("?");
-	addstr=addstr.substr(num+1);
+	$( "#clientlist" ).autocomplete({          source: "/cgi-bin/hm-cgi/clientautocomp"         });
 
-	$("#querystring").html("打开的参数是：" + addstr );
+	$("#prebook").hide()	
 	
-	
-
-	
-	num = addstr.indexOf("&room=");
-	
-	roomid = addstr.substr(num + 6, 4 );
-	
-	num = addstr.indexOf("date=");
-	
-	datestr =  addstr.substr(num+5,addstr.indexOf("&room=") - num -5);
-
-		$("title").html("预定房间 "  + roomid);
-	
-	$("#date").html(datestr);
-	
-	$( "#clientlist" ).autocomplete({
-            source: "/cgi-bin/hm-cgi/clientautocomp"
-        });
-	
-	$("#roomid").html(roomid);
-
-	$("#submitbook").click(submitbook);
 
 });

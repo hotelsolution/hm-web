@@ -9,15 +9,6 @@
 		}
 		showTab.apply(currentTab.get(0));
 
-		$('#inputDate').DatePicker({
-			flat: true,
-			date: Date(),
-			calendars: 3,
-			mode: 'range',
-			starts: 1,
-			onChange: ondatepick
-		});
-
 		var state = false;
 		$('#widgetField>a').bind('click', function(){
 			$('#widgetCalendar').stop().animate({height: state ? 0 : $('#widgetCalendar div.datepicker').get(0).offsetHeight}, 500);
@@ -34,9 +25,8 @@
 		$(this)
 			.addClass('active')
 			.blur();
-		$('div.tab')
-			.hide()
-				.eq(tabIndex)
+		$('div.tab').hide();
+		$('div.tab').eq(tabIndex)
 				.show();
 	};
 	

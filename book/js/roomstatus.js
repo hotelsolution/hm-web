@@ -47,11 +47,14 @@ function onjson(data)
 
 		// 刷新，跳到新页面！
 
-		if($(this).children("p").hasClass("freeroom") )
-			window.open("prebook.html?date="+formateddate+"&room="+roomid);
+		if($(this).children("p").hasClass("freeroom") ){
 
-	});
-	
+			$('ul.navigationTabs #prebooktab').click();
+
+			activeprebook(roomid , formateddate);
+		}
+
+	});	
 }
 
 
@@ -65,7 +68,43 @@ function ondatepick(formated, dates)
 	$.getJSON("/cgi-bin/hm-cgi/status?"+formateddate ,onjson );
 }
 
+function clickCheckbox(){
+
+	$('#inputDate').html("");
+
+	if(document.getElementById("datecheckbox").checked==true){
+
+			$('#inputDate').DatePicker({
+				flat: true,
+				date: Date(),
+				calendars: 3,
+				mode: 'range',
+				starts: 1,
+				onChange: ondatepick
+			});
+
+	}else{
+		$('#inputDate').DatePicker({
+			flat: true,
+			date: Date(),
+			calendars: 3,
+			starts: 1,
+			onChange: ondatepick
+		});
+
+	}
+
+}
+
 $(document).ready(function(){
+
+		$('#inputDate').DatePicker({
+			flat: true,
+			date: Date(),
+			calendars: 3,
+			starts: 1,
+			onChange: ondatepick
+		});
 
 	$("table.roomstatus tr td").mouseover(function(){
 		

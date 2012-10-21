@@ -5,48 +5,97 @@
 	<link rel="stylesheet" href="css/datepicker.css" type="text/css" />
     <link rel="stylesheet" media="screen" type="text/css" href="css/layout.css" />
     <link rel="stylesheet" media="screen" type="text/css" href="css/roomstatus.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="css/jquery-ui.css" />
 
     <title>西坡29 -- 信息化服务</title>
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-json.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/datepicker.js"></script>
     <script type="text/javascript" src="js/eye.js"></script>
     <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/prebook.js"></script>
     <script type="text/javascript" src="js/roomstatus.js"></script>
 </head>
 <body>
     <div class="wrapper">
-        <h1>西坡29 -- 预订</h1>
+        <h1>西坡29 -- 查询</h1>
         <ul class="navigationTabs">
-            <li><a href="#预订" rel="预订">预订</a></li>
             <li><a href="#查询" rel="查询">查询</a></li>
+            <li><a href="#预订" rel="预订" id="prebooktab">预订</a></li>
             <li><a href="#客户管理" rel="客户管理">客户管理</a></li>
         </ul>
+
         <div class="tabsContent">
             <div class="tab">
-                 <h3>日期选择</h3>
+                 <h2>日期选择
+			<input type="checkbox" id="datecheckbox" onclick="clickCheckbox()">多选</input></h2>
 			<p id="inputDate"></p>
 
-		<div class="tabsContent">
 
 		<h3>房间状态</h3>
 
-		<div id=test></div>		
-
-            </div>
-
+		<div id=test></div>
+		
 		<table class="roomstatus">
 		</table>
 
-
-            <div class="tab">
-                <h2>查询</h2>
-
-                </dl>
             </div>
+
+            <div class="tab" id="prebook">
+                <h2>预订</h2>
+
+
+
+
+			<div>
+
+			<var id="querystring"></var>
+
+			<p>
+			房间号是：<var id="roomid">0000</var>
+			</p>
+
+			<p>
+			日期是： <var id="date">0000-00-00</var>
+			</p>
+
+
+			</div>
+
+			<div class="ui-widget">
+
+			<label for="client">选择预订的客户 </label>
+			<input id="clientlist" />
+
+			<button id="submitbook">预订</button>
+
+			<p></p>
+
+			<label >备注</label>
+			<input id="special" />
+
+
+			</div>
+
+			<p/>
+
+			<div id="result">
+
+			<p> 预订结果在这里显示 </p>
+
+			</div>
+
+            </div>
+
             <div class="tab">
                 <h2>客户信息管理</h2>
+
+		
             </div>
-        </div>
+
+       </div>
+
     </div>
 </body>
 </html>

@@ -20,69 +20,18 @@
         </ul>
         <div class="tabsContent">
             <div class="tab">
-                <h2>About</h2>
-				<p>Date Picker component with a lot of options and easy to fit in your web application.</p>
-				<h3>Last update</h3>
-				<p>22.05.2009 - Check Download tab</p>
-                <h3>Features</h3>
-                <ul>
-                    <li>Flat mode - as element in page</li>
-                    <li>Multiple calendars in the component</li>
-                    <li>Allows single, multiple or range selection</li>
-					<li>Mark dates as special, weekends, special days</li>
-					<li>Easy to customize the look by changing CSS</li>
-					<li>Localiation for months' and days' names</li>
-					<li>Custom day to start the week</li>
-					<li>Fits into the viewport</li>
-                </ul>
+                 <h3>日期选择</h3>
+			<p id="inputDate"></p>
 
-                <h3>Examples</h3>
-				<p>Flat mode, range selection, 3 calendars.</p>
-				<p id="date3"></p>
-			<pre>$('#date3').DatePicker({
-	flat: true,
-	date: ['2008-07-28','2008-07-31'],
-	current: '2008-07-31',
-	calendars: 3,
-	mode: 'range',
-	starts: 1
-});</pre>
-				<p>Attached to an text field and usign callbacks to update the date selection with the value from the field.</p>
-				<p>
-					<input class="inputDate" id="inputDate" value="06/14/2008" />
-					<label id="closeOnSelect"><input type="checkbox" /> Close on selection</label>
-				</p>
-			<pre>$('#inputDate').DatePicker({
-	format:'m/d/Y',
-	date: $('#inputDate').val(),
-	current: $('#inputDate').val(),
-	starts: 1,
-	position: 'r',
-	onBeforeShow: function(){
-		$('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
-	},
-	onChange: function(formated, dates){
-		$('#inputDate').val(formated);
-		if ($('#closeOnSelect input').attr('checked')) {
-			$('#inputDate').DatePickerHide();
-		}
-	}
-});</pre>
-				<p>Flat mode, inside a custom widget and with custom design.</p>
-				<div id="widget">
-					<div id="widgetField">
-						<span>28 July, 2008 &divide; 31 July, 2008</span>
-						<a href="#">Select date range</a>
-					</div>
-					<div id="widgetCalendar">
-					</div>
-				</div>
-				<p>&nbsp;</p>
-				<p>&nbsp;</p>
-				<p>&nbsp;</p>
-				<p>&nbsp;</p>
-				<p>&nbsp;</p>
+		<h3>房间状态</h3>
+
+		<div id=test></div>
+		
+		<table class="roomstatus">
+		</table>
+
             </div>
+
             <div class="tab">
                 <h2>Download</h2>
                 <p><a href="datepicker.zip">datepicker.zip (50 kb)</a>: jQuery, Javscript files, CSS files, images, examples and instructions.</p>
